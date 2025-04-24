@@ -26,6 +26,12 @@ namespace Business.Services
             return _mapper.Map<IEnumerable<FormModuleSelectDto>>(entities);
         }
 
+        public async Task<IEnumerable<FormModuleSelectDto>> GetAllDeletesJoin()
+        {
+            var entities = await _repository.GetAllDeletesJoinAsync();
+            return _mapper.Map<IEnumerable<FormModuleSelectDto>>(entities);
+        }
+
         public async Task<FormModuleSelectDto?> GetByIdJoin(int id)
         {
             var entity = await _repository.GetByIdJoinAsync(id);

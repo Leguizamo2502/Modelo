@@ -10,6 +10,7 @@ namespace Data.Interfaces
     public interface IRolUserRepository : IData<RolUser>
     {
         Task<IEnumerable<RolUser>> GetAllJoinAsync();
+        Task<IEnumerable<RolUser>> GetAllDeletesJoinAsync();
         Task<RolUser?> GetByIdJoinAsync(int id);
     }
 }

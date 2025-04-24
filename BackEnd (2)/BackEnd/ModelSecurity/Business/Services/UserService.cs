@@ -43,7 +43,7 @@ namespace Business.Services
         {
             if (dto == null)
             {
-                throw new ValidationException("El objeto Rol no puede ser nulo");
+                throw new ValidationException("El objeto User no puede ser nulo");
             }
 
         }

@@ -53,7 +53,7 @@ namespace Web.Controllers
         }
 
         //Traer solo borrados logicamnete
-        [HttpGet("/getDelete")]
+        [HttpGet("getDelete")]
         [ProducesResponseType(typeof(IEnumerable<FormDto>), 200)]
         [ProducesResponseType(500)]
         public async Task<IActionResult> GetAllDeletes()

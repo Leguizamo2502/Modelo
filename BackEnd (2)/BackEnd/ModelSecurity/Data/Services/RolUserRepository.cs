@@ -21,6 +21,15 @@ namespace Data.Services
                  .ToListAsync();
         }
 
+        public async Task<IEnumerable<RolUser>> GetAllDeletesJoinAsync()
+        {
+            return await _dbSet
+                 .Include(u => u.rol)
+                 .Include(u => u.user)
+                 .Where(u => u.is_deleted)
+                 .ToListAsync();
+        }
+
         public async Task<RolUser?> GetByIdJoinAsync(int id)
         {
             return await _dbSet

@@ -10,6 +10,9 @@ namespace Data.Interfaces
     public interface IFormModuleRepository : IData<FormModule>
     {
         Task<IEnumerable<FormModule>> GetAllJoinAsync();
+
+        Task<IEnumerable<FormModule>> GetAllDeletesJoinAsync();
+
         Task<FormModule?> GetByIdJoinAsync(int id);
     }
 }

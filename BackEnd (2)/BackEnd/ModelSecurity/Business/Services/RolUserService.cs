@@ -32,6 +32,12 @@ namespace Business.Services
             return _mapper.Map<IEnumerable<RolUserSelectDto>>(entities);
         }
 
+        public async Task<IEnumerable<RolUserSelectDto>> GetAllDeletesJoin()
+        {
+            var entities = await _repository.GetAllDeletesJoinAsync();
+            return _mapper.Map<IEnumerable<RolUserSelectDto>>(entities);
+        }
+
         public async Task<RolUserSelectDto?> GetByIdJoin(int id)
         {
             var entity = await _repository.GetByIdJoinAsync(id);

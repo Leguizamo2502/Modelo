@@ -21,6 +21,15 @@ namespace Data.Services
                        .ToListAsync();
         }
 
+        public async Task<IEnumerable<FormModule>> GetAllDeletesJoinAsync()
+        {
+            return await _dbSet
+                       .Include(u => u.form)
+                       .Include(u => u.module)
+                       .Where(u => u.is_deleted)
+                       .ToListAsync();
+        }
+
         public async Task<FormModule?> GetByIdJoinAsync(int id)
         {
             return await _dbSet

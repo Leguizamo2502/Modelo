@@ -127,7 +127,7 @@
         }
       }
     },
-    "/getDelete": {
+    "/api/Form/getDelete": {
       "get": {
         "tags": [
           "Form"
@@ -475,6 +475,31 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/FormModule/getDelete": {
+      "get": {
+        "tags": [
+          "FormModule"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/FormModuleSelectDto"
+                  }
                 }
               }
             }
@@ -2250,6 +2275,31 @@
         }
       }
     },
+    "/api/RolFormPermission/getDelete": {
+      "get": {
+        "tags": [
+          "RolFormPermission"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/FormModuleSelectDto"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
     "/api/RolFormPermission/{id}": {
       "get": {
         "tags": [
@@ -2573,6 +2623,31 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/RolUser/getDelete": {
+      "get": {
+        "tags": [
+          "RolUser"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/FormModuleSelectDto"
+                  }
                 }
               }
             }

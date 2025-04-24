@@ -19,6 +19,16 @@ namespace Data.Services
                 .ToListAsync();
         }
 
+        public async Task<IEnumerable<RolFormPermission>> GetAllDeletesJoinAsync()
+        {
+            return await _dbSet
+                .Include(u => u.rol)
+                .Include(u => u.form)
+                .Include(u => u.permission)
+                .Where(u => u.is_deleted)
+                .ToListAsync();
+        }
+
         public async Task<RolFormPermission?> GetByIdJoinAsync(int id)
         {
             return await _dbSet

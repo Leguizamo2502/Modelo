@@ -52,7 +52,7 @@ namespace Data.Services
         {
             return await _dbSet
                         .Include(u => u.person)
-                        .Where(u => !u.is_deleted && u.id == id)
+                        //.Where(u => !u.is_deleted && u.id == id)
                         .FirstOrDefaultAsync();
         }
     }

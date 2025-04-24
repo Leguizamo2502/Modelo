@@ -52,6 +52,23 @@ namespace Web.Controllers
             }
         }
 
+        [HttpGet("getDelete")]
+        [ProducesResponseType(typeof(IEnumerable<FormModuleSelectDto>), 200)]
+        [ProducesResponseType(500)]
+        public async Task<IActionResult> GetAllDeletes()
+        {
+            try
+            {
+                var FormModules = await _RolUserBusiness.GetAllDeletesJoin();
+                return Ok(FormModules);
+            }
+            catch (ExternalServiceException ex)
+            {
+                _logger.LogError(ex, "Error al obtener FormModule");
+                return StatusCode(500, new { message = ex.Message });
+            }
+        }
+
         /// <summary>
         /// Obtiene una RolUser específica por su id
         /// </summary>
