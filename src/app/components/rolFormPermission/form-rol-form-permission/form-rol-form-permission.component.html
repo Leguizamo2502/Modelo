@@ -1,0 +1,57 @@
+<form (submit)="guardar()" [formGroup]="form" class="form-container">
+    <h2 class="form-title">{{ modelo ? 'RolFormPermission' : 'RolFormPermission' }}</h2>
+  
+    <div class="form-row">
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Seleccionar Rol</mat-label>
+        <mat-select formControlName="rolid" required>
+          <mat-option *ngFor="let rol of rols" [value]="rol.id">
+            {{ rol.name }} - {{ rol.description || 'Sin descripción' }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.get('rolid')?.hasError('required')">
+          Seleccione un rol
+        </mat-error>
+        <mat-hint>Seleccione el rol al que asignará permisos</mat-hint>
+      </mat-form-field>
+    </div>
+  
+    <div class="form-row">
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Seleccionar Formulario</mat-label>
+        <mat-select formControlName="formid" required>
+          <mat-option *ngFor="let form of forms" [value]="form.id">
+            {{ form.name }} - {{ form.description || 'Sin descripción' }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.get('formid')?.hasError('required')">
+          Seleccione un formulario
+        </mat-error>
+        <mat-hint>Seleccione el formulario afectado</mat-hint>
+      </mat-form-field>
+    </div>
+  
+    <div class="form-row">
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Seleccionar Permiso</mat-label>
+        <mat-select formControlName="permissionid" required>
+          <mat-option *ngFor="let permiso of permissions" [value]="permiso.id">
+            {{ permiso.name }} - {{ permiso.description || 'Sin descripción' }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.get('permissionid')?.hasError('required')">
+          Seleccione un permiso
+        </mat-error>
+        <mat-hint>Seleccione el permiso a asignar</mat-hint>
+      </mat-form-field>
+    </div>
+  
+    <div class="form-actions">
+      <button type="submit" mat-flat-button color="primary" [disabled]="form.invalid">
+        <mat-icon>save</mat-icon> {{ modelo ? 'Actualizar' : 'Guardar' }}
+      </button>
+      <a mat-stroked-button color="warn" routerLink="/register-rolFormPermission">
+        <mat-icon>cancel</mat-icon> Cancelar
+      </a>
+    </div>
+  </form>

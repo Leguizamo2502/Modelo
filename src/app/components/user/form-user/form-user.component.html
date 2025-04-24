@@ -1,0 +1,33 @@
+<form (submit)="guardar()" [formGroup]="form">
+  <h2>Usuario</h2>
+    <mat-form-field appearance="outline">
+      <mat-label>Name</mat-label>
+      <input formControlName="user_name" matInput>
+    </mat-form-field>
+  
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input formControlName="email" matInput>
+    </mat-form-field>
+  
+    <mat-form-field appearance="outline">
+      <mat-label>Password</mat-label>
+      <input formControlName="password" matInput type="password">
+    </mat-form-field>
+  
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Seleccionar persona</mat-label>
+      <mat-select formControlName="person_id" required>
+        <mat-option *ngFor="let p of person" [value]="p.id">
+          {{ p.first_name }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="form.get('person_id')?.invalid">Seleccione una persona</mat-error>
+    </mat-form-field>
+  
+    <div>
+      <button type="submit" mat-flat-button>Save</button>
+      <a mat-stroked-button routerLink="/register-user">Cancel</a>
+    </div>
+  </form>
+  

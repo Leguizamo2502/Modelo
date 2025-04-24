@@ -1,0 +1,59 @@
+<form (ngSubmit)="guardar()" [formGroup]="form">
+  <h2>Persona</h2>
+  <mat-form-field appearance="outline">
+    <mat-label>Nombre</mat-label>
+    <input formControlName="first_name" matInput required>
+    <mat-error *ngIf="first_name?.hasError('required')">
+      El nombre es requerido
+    </mat-error>
+    <mat-error *ngIf="first_name?.hasError('minlength')">
+      El nombre debe tener al menos 2 caracteres
+    </mat-error>
+    <mat-error *ngIf="first_name?.hasError('maxlength')">
+      El nombre no puede exceder los 50 caracteres
+    </mat-error>
+    <mat-error *ngIf="first_name?.hasError('pattern')">
+      Solo se permiten letras y espacios
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Apellido</mat-label>
+    <input formControlName="last_name" matInput required>
+    <mat-error *ngIf="last_name?.hasError('required')">
+      El apellido es requerido
+    </mat-error>
+    <mat-error *ngIf="last_name?.hasError('minlength')">
+      El apellido debe tener al menos 2 caracteres
+    </mat-error>
+    <mat-error *ngIf="last_name?.hasError('maxlength')">
+      El apellido no puede exceder los 50 caracteres
+    </mat-error>
+    <mat-error *ngIf="last_name?.hasError('pattern')">
+      Solo se permiten letras y espacios
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Teléfono</mat-label>
+    <input formControlName="phone_number" matInput type="tel" required>
+    <mat-hint class="phone-hint">Solo números, sin espacios ni caracteres especiales</mat-hint>
+    <mat-error *ngIf="phone_number?.hasError('required')">
+      El teléfono es requerido
+    </mat-error>
+    <mat-error *ngIf="phone_number?.hasError('pattern')">
+      Solo se permiten números
+    </mat-error>
+    <mat-error *ngIf="phone_number?.hasError('minlength')">
+      El teléfono debe tener al menos 7 dígitos
+    </mat-error>
+    <mat-error *ngIf="phone_number?.hasError('maxlength')">
+      El teléfono no puede exceder los 15 dígitos
+    </mat-error>
+  </mat-form-field>
+
+  <div class="actions">
+    <a mat-stroked-button routerLink="/register-person">Cancelar</a>
+    <button type="submit" mat-flat-button color="primary" [disabled]="form.invalid">Guardar</button>
+  </div>
+</form>

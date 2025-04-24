@@ -1,0 +1,42 @@
+<form (submit)="guardar()" [formGroup]="form" class="form-container">
+    <h2 class="form-title">{{ modelo ? 'Editar Asignación' : 'Asignar Rol a Usuario' }}</h2>
+  
+    <div class="form-row">
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Seleccionar Usuario</mat-label>
+        <mat-select formControlName="userid" required>
+          <mat-option *ngFor="let u of user" [value]="u.id">
+            {{ u.user_name }} ({{ u.email }})
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.get('userid')?.hasError('required')">
+          Seleccione un usuario
+        </mat-error>
+        <mat-hint>Busque y seleccione un usuario</mat-hint>
+      </mat-form-field>
+    </div>
+  
+    <div class="form-row">
+      <mat-form-field appearance="fill" class="full-width">
+        <mat-label>Seleccionar Rol</mat-label>
+        <mat-select formControlName="rolid" required>
+          <mat-option *ngFor="let r of rol" [value]="r.id">
+            {{ r.name }} - {{ r.description }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.get('rolid')?.hasError('required')">
+          Seleccione un rol
+        </mat-error>
+        <mat-hint>Seleccione el rol a asignar</mat-hint>
+      </mat-form-field>
+    </div>
+  
+    <div class="form-actions">
+      <button type="submit" mat-flat-button color="primary" [disabled]="form.invalid">
+        <mat-icon>save</mat-icon> {{ modelo ? 'Actualizar' : 'Guardar' }}
+      </button>
+      <a mat-stroked-button color="warn" routerLink="/register-rolUser">
+        <mat-icon>cancel</mat-icon> Cancelar
+      </a>
+    </div>
+  </form>
