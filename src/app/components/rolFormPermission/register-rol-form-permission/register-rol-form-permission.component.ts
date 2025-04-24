@@ -5,6 +5,7 @@ import { MatTableModule } from '@angular/material/table';
 import { MatButtonModule } from '@angular/material/button';
 import { Router, RouterLink } from '@angular/router';
 import { FormRolFormPermissionComponent } from '../form-rol-form-permission/form-rol-form-permission.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-register-rol-form-permission',
@@ -13,6 +14,7 @@ import { FormRolFormPermissionComponent } from '../form-rol-form-permission/form
     MatButtonModule,
     RouterLink,
     FormRolFormPermissionComponent,
+    CommonModule
   ],
   templateUrl: './register-rol-form-permission.component.html',
   styleUrl: './register-rol-form-permission.component.css',
@@ -23,7 +25,17 @@ export class RegisterRolFormPermissionComponent {
 
   private readonly router = inject(Router);
 
-  constructor() {
+  isAdmin:boolean = false;
+  role = localStorage.getItem('role');
+
+
+
+  constructor(){
+    
+    this.isAdmin = this.role === 'Admin';
+    // if (this.isAdmin) {
+    //   this.displayedColumns.push('adminAction')
+    // }
     this.loadRolFormPermission();
   }
 

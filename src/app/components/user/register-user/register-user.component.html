@@ -1,5 +1,7 @@
 <app-form-user (posteoFormulario)="guardar($event)"></app-form-user>
 
+<button mat-button *ngIf="isAdmin" routerLink="restaure">Restaurar Eliminados Logicos</button>
+
 <table mat-table [dataSource]="user" class="mat-elevation-z8">
     <ng-container matColumnDef="username">
       <th mat-header-cell *matHeaderCellDef> UserName </th>

@@ -1,5 +1,6 @@
 <app-form-form (posteoFormulario)="guardar($event)"></app-form-form>
 
+<button mat-button *ngIf="isAdmin" routerLink="restaure">Restaurar Eliminados Logicos</button>
 
 <table mat-table [dataSource]="form" class="mat-elevation-z8">
     <ng-container matColumnDef="name">
@@ -19,7 +20,7 @@
         <a mat-button routerLink="update/{{element.id}}">Actualizar</a>
         <button mat-button color="warn" (click)="delete(element.id)">Eliminar</button>
         <button mat-button color="" (click)="deleteLogic(element.id,[])">Eliminar Logico</button>
-        <button mat-button color="" *ngIf="isAdmin" (click)="restaure(element.id,[])">restaurar</button>
+        <!-- <button mat-button color="" *ngIf="isAdmin" (click)="restaure(element.id,[])">restaurar</button> -->
         <!-- <button mat-button color="warn" (click)="deleteBook(element.id_book)">Eliminar</button> -->
       </td>
     </ng-container>

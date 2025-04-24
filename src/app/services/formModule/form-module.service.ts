@@ -61,13 +61,23 @@ export class FormModuleService {
       headers,
     });
   }
-  public restoreLogic(id:number,forms:[]){
-    const headers = new HttpHeaders({
-      Authorization: `Bearer ${this.token}`,
-    });
-    return this.http.patch(`${this.URLbase}/logical-restore/${id}`, forms, {
-      headers,
-    });
-  }
+ public restoreLogic(id: number, formModules: []) {
+     const headers = new HttpHeaders({
+       Authorization: `Bearer ${this.token}`,
+     });
+     return this.http.patch(`${this.URLbase}/logical-restore/${id}`, formModules, {
+       headers,
+     });
+   }
+ 
+  
+ 
+   public getDeletesFormModule(): Observable<formModule[]> {
+     const headers = new HttpHeaders({
+       Authorization: `Bearer ${this.token}`,
+     });
+ 
+     return this.http.get<formModule[]>(`${this.URLbase}/getDelete`, { headers });
+   }
 
 }

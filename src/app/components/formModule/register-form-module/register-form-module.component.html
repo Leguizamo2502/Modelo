@@ -1,4 +1,6 @@
 <app-form-form-module (posteoFormulario)="guardar($event)"></app-form-form-module>
+
+<button mat-button *ngIf="isAdmin" routerLink="restaure">Restaurar Eliminados Logicos</button>
 <table mat-table [dataSource]="formModule" class="mat-elevation-z8">
     <ng-container matColumnDef="formname">
       <th mat-header-cell *matHeaderCellDef> FormName </th>

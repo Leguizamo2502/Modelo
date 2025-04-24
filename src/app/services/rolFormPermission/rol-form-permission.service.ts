@@ -1,3 +1,4 @@
+
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
@@ -61,5 +62,24 @@ export class rolFormPermissionService {
       headers,
     });
   }
+
+  public restoreLogic(id: number, rolFormPermissions: []) {
+      const headers = new HttpHeaders({
+        Authorization: `Bearer ${this.token}`,
+      });
+      return this.http.patch(`${this.URLbase}/logical-restore/${id}`, rolFormPermissions, {
+        headers,
+      });
+    }
+  
+   
+  
+    public getDeletesRolFormPermission(): Observable<rolFormPermission[]> {
+      const headers = new HttpHeaders({
+        Authorization: `Bearer ${this.token}`,
+      });
+  
+      return this.http.get<rolFormPermission[]>(`${this.URLbase}/getDelete`, { headers });
+    }
 
 }

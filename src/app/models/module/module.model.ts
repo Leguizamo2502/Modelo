@@ -3,7 +3,7 @@ export interface module{
     name:string;
     description:string;
     active:boolean;
-    is_delete:boolean;
+    is_deleted:boolean;
 }
 
 export interface moduleCreate{

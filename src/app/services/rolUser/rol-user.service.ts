@@ -61,5 +61,25 @@ export class RolUserService {
       headers,
     });
   }
+
+
+  public restoreLogic(id: number, rolUsers: []) {
+      const headers = new HttpHeaders({
+        Authorization: `Bearer ${this.token}`,
+      });
+      return this.http.patch(`${this.URLbase}/logical-restore/${id}`, rolUsers, {
+        headers,
+      });
+    }
+  
+   
+  
+    public getDeletesRolUser(): Observable<rolUser[]> {
+      const headers = new HttpHeaders({
+        Authorization: `Bearer ${this.token}`,
+      });
+  
+      return this.http.get<rolUser[]>(`${this.URLbase}/getDelete`, { headers });
+    }
   
 }

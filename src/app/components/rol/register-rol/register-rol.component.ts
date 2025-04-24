@@ -6,10 +6,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { Router, RouterLink } from '@angular/router';
 import { MatTableModule } from '@angular/material/table';
 import { FormRolComponent } from '../form-rol/form-rol.component';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-register-rol',
-  imports: [MatButtonModule,RouterLink,MatTableModule,FormRolComponent],
+  imports: [MatButtonModule,RouterLink,MatTableModule,FormRolComponent,CommonModule],
   templateUrl: './register-rol.component.html',
   styleUrl: './register-rol.component.css'
 })
@@ -17,7 +18,15 @@ export class RegisterRolComponent {
 
   rolService = inject(RolServiceService);
   rol:rol[]=[]
+
+
+  isAdmin:boolean = false;
+
+
   constructor(){
+    const role = localStorage.getItem('role');
+    console.log(role)
+    this.isAdmin = role === 'Admin';
     this.loadRol();
   }
 

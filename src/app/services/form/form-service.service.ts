@@ -61,7 +61,7 @@ export class FormServiceService {
     });
   }
 
-  public restoreLogic(id:number,forms:[]){
+  public restoreLogic(id: number, forms: []) {
     const headers = new HttpHeaders({
       Authorization: `Bearer ${this.token}`,
     });
@@ -69,4 +69,15 @@ export class FormServiceService {
       headers,
     });
   }
+
+ 
+
+  public getDeletesForm(): Observable<form[]> {
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${this.token}`,
+    });
+
+    return this.http.get<form[]>(`${this.URLbase}/getDelete`, { headers });
+  }
+
 }

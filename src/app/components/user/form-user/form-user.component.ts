@@ -47,13 +47,14 @@ export class FormUserComponent implements OnInit {
       Validators.email
     ]],
     password: ['', [
-      Validators.required
-      
+      Validators.required,
+      Validators.pattern(/^(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9])(?=.{8,})/)
     ]],
     active: [true],
     person_id: [0, [
       Validators.required,
-      Validators.min(1) // Asegura que se seleccione una persona válida
+      Validators.min(1) 
+      // Asegura que se seleccione una persona válida
     ]]
   });
 
@@ -87,5 +88,7 @@ export class FormUserComponent implements OnInit {
     
     let users = this.form.value as userCreate;
     this.posteoFormulario.emit(users);
+
+    
   }
 }

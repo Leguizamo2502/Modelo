@@ -3,6 +3,7 @@ export interface form{
     name:string;
     description:string;
     active:boolean;
+    is_deleted:boolean;
 }
 
 export interface formCreate{

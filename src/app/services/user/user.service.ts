@@ -61,4 +61,23 @@ export class UserService {
       headers,
     });
   }
+
+  public restoreLogic(id: number, users: []) {
+      const headers = new HttpHeaders({
+        Authorization: `Bearer ${this.token}`,
+      });
+      return this.http.patch(`${this.URLbase}/logical-restore/${id}`, users, {
+        headers,
+      });
+    }
+  
+   
+  
+    public getDeletesUser(): Observable<user[]> {
+      const headers = new HttpHeaders({
+        Authorization: `Bearer ${this.token}`,
+      });
+  
+      return this.http.get<user[]>(`${this.URLbase}/getDelete`, { headers });
+    }
 }

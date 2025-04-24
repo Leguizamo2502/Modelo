@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { formModule, formModuleCreate } from '../../../models/formModule/formModule.model';
 import { FormModuleService } from '../../../services/formModule/form-module.service';
@@ -8,7 +9,7 @@ import { FormFormModuleComponent } from "../form-form-module/form-form-module.co
 
 @Component({
   selector: 'app-register-form-module',
-  imports: [MatTableModule, MatButtonModule, RouterLink, FormFormModuleComponent],
+  imports: [MatTableModule, MatButtonModule, RouterLink, FormFormModuleComponent,CommonModule],
   templateUrl: './register-form-module.component.html',
   styleUrl: './register-form-module.component.css',
 })
@@ -16,13 +17,25 @@ export class RegisterFormModuleComponent {
   formModuleService = inject(FormModuleService);
   formModule: formModule[] = [];
 
-  constructor() {
+
+  isAdmin:boolean = false;
+  role = localStorage.getItem('role');
+
+
+
+  constructor(){
+    
+    this.isAdmin = this.role === 'Admin';
+    // if (this.isAdmin) {
+    //   this.displayedColumns.push('adminAction')
+    // }
     this.loadformModule();
   }
 
   loadformModule() {
     this.formModuleService.getFormModule().subscribe((data) => {
       this.formModule = data;
+      console.log(this.formModule);
     });
   }
 

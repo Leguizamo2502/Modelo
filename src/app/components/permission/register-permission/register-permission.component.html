@@ -1,5 +1,5 @@
 <app-form-permission (posteoFormulario)="guardar($event)"></app-form-permission>
-
+<button mat-button *ngIf="isAdmin" routerLink="restaure">Restaurar Eliminados Logicos</button>
 <table mat-table [dataSource]="permission" class="mat-elevation-z8">
     <ng-container matColumnDef="name">
       <th mat-header-cell *matHeaderCellDef> Name </th>

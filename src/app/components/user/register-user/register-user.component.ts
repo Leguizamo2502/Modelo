@@ -5,10 +5,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
 import { Router, RouterLink } from '@angular/router';
 import { FormUserComponent } from "../form-user/form-user.component";
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-register-user',
-  imports: [MatButtonModule, MatTableModule, RouterLink, FormUserComponent],
+  imports: [MatButtonModule, MatTableModule, RouterLink, FormUserComponent,CommonModule],
   templateUrl: './register-user.component.html',
   styleUrl: './register-user.component.css',
 })
@@ -16,7 +17,17 @@ export class RegisterUserComponent {
   userService = inject(UserService);
   user: user[] = [];
 
-  constructor() {
+  isAdmin:boolean = false;
+  role = localStorage.getItem('role');
+
+
+
+  constructor(){
+    
+    this.isAdmin = this.role === 'Admin';
+    // if (this.isAdmin) {
+    //   this.displayedColumns.push('adminAction')
+    // }
     this.loadUser();
   }
 

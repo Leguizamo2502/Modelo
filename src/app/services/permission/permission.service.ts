@@ -63,4 +63,21 @@ export class PermissionService {
       headers,
     });
   }
+
+  public restoreLogic(id: number, permissions: []) {
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${this.token}`,
+    });
+    return this.http.patch(`${this.URLbase}/logical-restore/${id}`, permissions, {
+      headers,
+    });
+  }
+
+  public getDeletesPermission(): Observable<permission[]> {
+      const headers = new HttpHeaders({
+        Authorization: `Bearer ${this.token}`,
+      });
+  
+      return this.http.get<permission[]>(`${this.URLbase}/getDelete`, { headers });
+    }
 }

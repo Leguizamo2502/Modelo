@@ -5,11 +5,12 @@ import { MatButtonModule } from '@angular/material/button';
 import { Router, RouterLink } from '@angular/router';
 import { PermissionService } from '../../../services/permission/permission.service';
 import { FormPermissionComponent } from "../form-permission/form-permission.component";
+import { CommonModule } from '@angular/common';
 
 
 @Component({
   selector: 'app-register-permission',
-  imports: [MatTableModule, MatButtonModule, RouterLink, FormPermissionComponent],
+  imports: [MatTableModule, MatButtonModule, RouterLink, FormPermissionComponent,CommonModule],
   templateUrl: './register-permission.component.html',
   styleUrl: './register-permission.component.css'
 })
@@ -17,7 +18,17 @@ export class RegisterPermissionComponent {
   permissionService = inject(PermissionService);
   permission:permission[]=[]
 
+  isAdmin:boolean = false;
+  role = localStorage.getItem('role');
+
+
+
   constructor(){
+    
+    this.isAdmin = this.role === 'Admin';
+    // if (this.isAdmin) {
+    //   this.displayedColumns.push('adminAction')
+    // }
     this.loadPermission();
   }
 
